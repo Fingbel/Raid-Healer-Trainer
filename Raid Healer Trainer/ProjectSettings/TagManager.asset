@@ -6,6 +6,7 @@ TagManager:
   tags:
   - allySpawnPoint
   - ennemySpawnPoint
+  - UIController
   layers:
   - Default
   - TransparentFX

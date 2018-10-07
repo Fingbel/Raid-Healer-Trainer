@@ -7,15 +7,18 @@ using UnityEngine;
 public class minion
 {
     public string name { get; protected set; }
+    public string job;
     public int hp { get; protected set; }
-    public Sprite sprite { get; set; }
+    public int mp;
+    public bool isDead;
+    
 
 
-    public minion (string name,int hp,Sprite sprite)
+    public minion (string name,int hp)
     {
         this.name = name;
         this.hp = hp;
-        this.sprite = sprite;
+
     }
 
     public void getDamage(minion minion, int hit)

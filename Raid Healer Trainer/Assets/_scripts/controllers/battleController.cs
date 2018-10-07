@@ -13,8 +13,8 @@ public class battleController : MonoBehaviour {
     List<minion> ennemyList;
     public Sprite allySprite;
     public Sprite ennemySprite;
-    public GameObject char_button;
-    public GameObject charPanel_canvas;
+    public UIController UICtrl;
+
     // Use this for initialization
     void Start () {
         
@@ -25,17 +25,36 @@ public class battleController : MonoBehaviour {
         List<minion> ennemyList = new List<minion>();
         List<minion> allyList = new List<minion>();
 
-        //FIXME - Remplissage des listes
-        allyList.Add(new minion("Gandalf",10,allySprite)); //FIXME - HARDCODED
-        allyList.Add(new minion("Frobite", 10, allySprite)); //FIXME - HARDCODED
-        allyList.Add(new minion("Sarouma,e", 10, allySprite)); //FIXME - HARDCODED
-        allyList.Add(new minion("HOUCAPOUPCA", 10, allySprite)); //FIXME - HARDCODED
+        //FIXME - Remplissage de la liste d'ally
+        allyList.Add(new minion("Gandalf",10)); //FIXME - HARDCODED
+        allyList.Add(new minion("Frobite", 10)); //FIXME - HARDCODED
+        allyList.Add(new minion("Sarouma,e", 10)); //FIXME - HARDCODED
+        allyList.Add(new minion("HOUCAPOUPCA", 10)); //FIXME - HARDCODED
+        allyList.Add(new minion("Gandalf", 10)); //FIXME - HARDCODED
+        allyList.Add(new minion("Frobite", 10)); //FIXME - HARDCODED
+        allyList.Add(new minion("Sarouma,e", 10)); //FIXME - HARDCODED
+        allyList.Add(new minion("HOUCAPOUPCA", 10)); //FIXME - HARDCODED
+        allyList.Add(new minion("Gandalf", 10)); //FIXME - HARDCODED
+        allyList.Add(new minion("Frobite", 10)); //FIXME - HARDCODED
+        allyList.Add(new minion("Sarouma,e", 10)); //FIXME - HARDCODED
+        allyList.Add(new minion("HOUCAPOUPCA", 10)); //FIXME - HARDCODED
+        allyList.Add(new minion("Gandalf", 10)); //FIXME - HARDCODED
+        allyList.Add(new minion("Frobite", 10)); //FIXME - HARDCODED
+        allyList.Add(new minion("Sarouma,e", 10)); //FIXME - HARDCODED
+        allyList.Add(new minion("HOUCAPOUPCA", 10)); //FIXME - HARDCODED
+        allyList.Add(new minion("Gandalf", 10)); //FIXME - HARDCODED
+        allyList.Add(new minion("Frobite", 10)); //FIXME - HARDCODED
+        allyList.Add(new minion("Sarouma,e", 10)); //FIXME - HARDCODED
+        allyList.Add(new minion("HOUCAPOUPCA", 10)); //FIXME - HARDCODED
+        allyList.Add(new minion("HOUCAPOUPCA", 10)); //FIXME - HARDCODED
 
 
 
 
 
-        ennemyList.Add(new minion("ennemy",10,ennemySprite)); //FIXME - HARDCODED
+        //FIXME - Remplissage de la liste d'ennemy
+
+        ennemyList.Add(new minion("ennemy",10)); //FIXME - HARDCODED
 
         //contrustion de la bataille
         
@@ -45,39 +64,40 @@ public class battleController : MonoBehaviour {
         for (int i = 0; i < allyList.Count; i++)
         {
             minion Ally_data = battle.AllyList[i];
+
             GameObject Ally_go = new GameObject();
+
             Ally_go.name = Ally_data.name;
+
+            //positionnement de l'ally
             Ally_go.transform.position = battle.spawnAlly(i);
+
+            //gestion du sprite de l'ally
             Ally_go.AddComponent<SpriteRenderer>();
             Ally_go.GetComponent<SpriteRenderer>().sprite = allySprite;
             Ally_go.GetComponent<SpriteRenderer>().sortingLayerName = "minions";
-            Debug.Log("Ally Gameobject "+allyList.Count+" created");
-
-            GameObject charbutton = Instantiate(char_button, transform.position, transform.rotation);
-            charbutton.transform.SetParent(charPanel_canvas.transform);
-
-            charbutton.GetComponentInChildren<Text>().text = Ally_data.name;
-           
+            UICtrl.spawnCharButton(Ally_data.name);
+            Debug.Log("Ally Gameobject "+Ally_data.name+" created");
+            
         }
 
         //Boucle pour chaque ennemy dans la liste d'ennemy
         for (int i = 0; i < ennemyList.Count; i++)
         {
-            minion Ennemy_data = battle.EnnemyList[i];
+            minion ennemy_data = battle.EnnemyList[i];
 
             GameObject Ennemy_go = new GameObject();
             Ennemy_go.name = ennemyList[i].name;
             Ennemy_go.transform.position = battle.spawnEnnemy(i);
+
+            //gestion du sprite de l'ennemy
             Ennemy_go.AddComponent<SpriteRenderer>();
             Ennemy_go.GetComponent<SpriteRenderer>().sprite = ennemySprite;
             Ennemy_go.GetComponent<SpriteRenderer>().sortingLayerName = "minions";
-            Debug.Log("Ennemy Gameobject "+ennemyList.Count+" created");
+
+            Debug.Log("Ennemy Gameobject "+ennemy_data.name+" created");
         }
         Debug.Log("Battle Created");
     	}
 
-    private void populateCharPanel()
-    {
-
-    }
 }
