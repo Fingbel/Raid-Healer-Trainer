@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class battle {
-    
+
+    minion allyTarget;
     public Vector3 AllySpawnPoint { get; protected set; }
     public Vector3 EnnemySpawnPoint { get; protected set; }
     public List<minion> AllyList { get; protected set; }
     public List<minion> EnnemyList { get; protected set; }
+
 
     public battle(Vector3 ennemySpawnPoint,Vector3 allySpawnPoint,List<minion> allyList, List<minion> ennemyList )
     {
@@ -38,5 +40,30 @@ public class battle {
 
     }
 
+    public void setAllyTarget(int index)
+    {
+        allyTarget = AllyList[index];        
+    }
+
     
+    public void damageMinion(int hitDamage)
+    {
+
+        allyTarget.hp -= hitDamage;
+        Debug.Log("Minion"+ allyTarget.name + " " + allyTarget.hp+"HP");
+        if(allyTarget.hp <= 0)
+        {
+            killMinion(allyTarget);
+            Debug.Log("Minion" + allyTarget.name + " est mort");
+            
+        }
+    }
+
+    public void killMinion(minion killed)
+    {
+        killed.isDead = true;
+        Debug.Log(killed.isDead);
+       
+    }
+        
 }

@@ -28,25 +28,7 @@ public class battleController : MonoBehaviour {
         //FIXME - Remplissage de la liste d'ally
         allyList.Add(new minion("Gandalf",10)); //FIXME - HARDCODED
         allyList.Add(new minion("Frobite", 10)); //FIXME - HARDCODED
-        allyList.Add(new minion("Sarouma,e", 10)); //FIXME - HARDCODED
-        allyList.Add(new minion("HOUCAPOUPCA", 10)); //FIXME - HARDCODED
-        allyList.Add(new minion("Gandalf", 10)); //FIXME - HARDCODED
-        allyList.Add(new minion("Frobite", 10)); //FIXME - HARDCODED
-        allyList.Add(new minion("Sarouma,e", 10)); //FIXME - HARDCODED
-        allyList.Add(new minion("HOUCAPOUPCA", 10)); //FIXME - HARDCODED
-        allyList.Add(new minion("Gandalf", 10)); //FIXME - HARDCODED
-        allyList.Add(new minion("Frobite", 10)); //FIXME - HARDCODED
-        allyList.Add(new minion("Sarouma,e", 10)); //FIXME - HARDCODED
-        allyList.Add(new minion("HOUCAPOUPCA", 10)); //FIXME - HARDCODED
-        allyList.Add(new minion("Gandalf", 10)); //FIXME - HARDCODED
-        allyList.Add(new minion("Frobite", 10)); //FIXME - HARDCODED
-        allyList.Add(new minion("Sarouma,e", 10)); //FIXME - HARDCODED
-        allyList.Add(new minion("HOUCAPOUPCA", 10)); //FIXME - HARDCODED
-        allyList.Add(new minion("Gandalf", 10)); //FIXME - HARDCODED
-        allyList.Add(new minion("Frobite", 10)); //FIXME - HARDCODED
-        allyList.Add(new minion("Sarouma,e", 10)); //FIXME - HARDCODED
-        allyList.Add(new minion("HOUCAPOUPCA", 10)); //FIXME - HARDCODED
-        allyList.Add(new minion("HOUCAPOUPCA", 10)); //FIXME - HARDCODED
+
 
 
 
@@ -67,7 +49,7 @@ public class battleController : MonoBehaviour {
 
             GameObject Ally_go = new GameObject();
 
-            Ally_go.name = Ally_data.name;
+            Ally_go.name = Ally_data.name + Ally_data.ID;
 
             //positionnement de l'ally
             Ally_go.transform.position = battle.spawnAlly(i);
@@ -76,7 +58,7 @@ public class battleController : MonoBehaviour {
             Ally_go.AddComponent<SpriteRenderer>();
             Ally_go.GetComponent<SpriteRenderer>().sprite = allySprite;
             Ally_go.GetComponent<SpriteRenderer>().sortingLayerName = "minions";
-            UICtrl.spawnCharButton(Ally_data.name);
+            UICtrl.spawnCharButton(Ally_data);
             Debug.Log("Ally Gameobject "+Ally_data.name+" created");
             
         }
@@ -99,5 +81,10 @@ public class battleController : MonoBehaviour {
         }
         Debug.Log("Battle Created");
     	}
+
+    private void Update()
+    {
+        
+    }
 
 }
